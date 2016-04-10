@@ -18,4 +18,7 @@ class TodoItem
     return " " + value.colorize(:white).on_red
   end
 
+  def change_priority(priority)
+    @priority = priority
+  end
 end

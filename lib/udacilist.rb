@@ -40,4 +40,12 @@ class UdaciList
       puts "#{position + 1}) #{item.details}"
     end
   end
+
+  def change_priority(item, priority)
+    todo_item = @items.find{|list_item| list_item.description == item} if item.is_a?(String)
+    todo_item = @items[item - 1] if item.is_a?(Integer)
+    todo_item.change_priority(priority)
+  end
+
+
 end

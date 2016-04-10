@@ -1,9 +1,5 @@
 module Listable
 
-  def format_description
-    "#{@description}".ljust(25)
-  end
-
   def details
     if self.class == LinkItem
       format_description + "site name: " + format_name
@@ -22,6 +18,10 @@ module Listable
         format_description + "event dates: " + format_date
       end
     end
+  end
+
+  def format_description
+    "(#{@type.capitalize}) #{@description}".ljust(25)
   end
 
   def format_date

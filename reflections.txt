@@ -3,12 +3,12 @@
 1. What is the gem of your choice and how did you use it?
      I chose to use Terminal-Notifier as my third gem. I used it to send a notification to the terminal if the due date for a task todo item is todays date.
 2. Describe the 2 features you added to the project.
-  a) Feature 1...I thought my choice of a third gem was a cool first feature.
+  a) Feature 1...The first feature is the ability to delete multiple items.
   b) Feature 2...The second feature is the ability to change the priority for the todo items.
 
 # REFLECTIONS
 # -------------------------------------------------------
 1. How long did you spend working on this project? 6 hours
 2. What was the most rewarding challenge you conquered? Figuring out how to use the gems. And also trying to understand the already written code.
-3. What two additional features did you build? Why? The first was the third gem that tested the date of the todos and events. If it was today, there will be a notification to popup informing you of the item that is due or started.
-4. Where do you still have room to grow? I definitely still need to learn proper ruby format. Also, the cool single liners that make the code more readable. 
+3. What two additional features did you build? Why? The first was the ability to delete multiple items, (credit to Udacity reviewer), I was actually going to originally use this feature but after about an hr of researching how to use the *args properly and still not understanding it i gave up. One comment from the reviewer and now i think ill be using it more often. The second was the change priority of the todo items. Priority of items change constantly either from the due date approaching or addition of new items. 
+4. Where do you still have room to grow? I definitely still need to learn proper ruby format. Also, the cool single liners that make the code more readable.

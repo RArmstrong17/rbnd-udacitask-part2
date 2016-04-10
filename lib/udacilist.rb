@@ -9,15 +9,17 @@ class UdaciList
 
   def add(type, description, options={})
     type = type.downcase
-    @items.push TodoItem.new(description, options, @title) if type == "todo"
-    @items.push EventItem.new(description, options, @title) if type == "event"
-    @items.push LinkItem.new(description, options, @title) if type == "link"
+    @items.push TodoItem.new(type, description, options, @title) if type == "todo"
+    @items.push EventItem.new(type, description, options, @title) if type == "event"
+    @items.push LinkItem.new(type, description, options, @title) if type == "link"
     raise UdaciListErrors::InvalidItemType, "#{type} is not accepted as a type for the list." if type != 'todo' && type != 'event' && type != 'link'
   end
 
-  def delete(index)
-    raise UdaciListErrors::IndexExceedsListSize, "The index is greater than the length of the list." if index > @items.length
-    @items.delete_at(index - 1)
+  def delete(*indices)
+    to_delete = *indices
+    to_delete.sort!.reverse!
+    raise UdaciListErrors::IndexExceedsListSize, "The index is greater than the length of the list." if to_delete.first > @items.length
+    @items.delete_if.with_index{|_, index| to_delete.include? index + 1}
   end
 
   def all
@@ -25,7 +27,7 @@ class UdaciList
     puts @title
     puts "-" * @title.length
     @items.each_with_index do |item, position|
-      puts "#{position + 1}) #{item.details}"
+      puts "#{position + 1})#{item.details}"
     end
   end
 
@@ -37,7 +39,7 @@ class UdaciList
     filter = @items.find_all{|list_items| list_items.is_a?(LinkItem)} if class_type == 'link'
     filter = @items.find_all{|list_items| list_items.is_a?(TodoItem)} if class_type == 'todo'
     filter.each_with_index do |item, position|
-      puts "#{position + 1}) #{item.details}"
+      puts "#{position + 1})#{item.details}"
     end
   end
 

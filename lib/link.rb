@@ -1,8 +1,9 @@
 class LinkItem
   include Listable
-  attr_reader :description, :site_name, :title
+  attr_reader :type, :description, :site_name, :title
 
-  def initialize(url, options={}, title)
+  def initialize(type, url, options={}, title)
+    @type = type
     @title = title
     @description = url
     @site_name = options[:site_name] || @description.delete('https://','http://').delete('www.').slice(0..-4)

@@ -44,6 +44,7 @@ class UdaciList
   def change_priority(item, priority)
     todo_item = @items.find{|list_item| list_item.description == item} if item.is_a?(String)
     todo_item = @items[item - 1] if item.is_a?(Integer)
+    raise UdaciListErrors::PriorityItemError, "Wrong item type, item is not a todo." if !todo_item.is_a?(TodoItem)
     todo_item.change_priority(priority)
   end
 

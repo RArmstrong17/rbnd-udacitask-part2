@@ -15,7 +15,12 @@ module Listable
         format_description + "due: " + format_date + format_priority
       end
     elsif self.class == EventItem
-      format_description + "event dates: " + format_date
+      if Date.today.strftime("%D") == format_date
+        TerminalNotifier.notify("#{self.description} in #{self.title} starts today.")
+        format_description + "event dates: " + format_date
+      else
+        format_description + "event dates: " + format_date
+      end
     end
   end
 
